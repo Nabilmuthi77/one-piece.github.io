@@ -107,11 +107,20 @@ header {
 .main-logo {
     max-width: 350px;
     width: 100%;
-    height: auto;
+    /* Memotong bagian kosong agar logo terlihat manjang/proporsional */
+    height: 120px;
+    object-fit: cover;
+    object-position: center;
     margin: 10px auto;
     display: block;
     transition: transform 0.3s ease;
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+    
+    /* Trik CSS untuk menghilangkan background (terutama background putih) */
+    mix-blend-mode: multiply;
+}
+
+body:not(.light-theme) .main-logo {
+    mix-blend-mode: screen; 
 }
 
 .main-logo:hover {
