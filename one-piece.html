@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>One Piece Characters</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <button id="themeToggle" class="theme-btn">☀️ Light Mode</button>
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/One_Piece_Logo.svg" alt="One Piece Logo" class="main-logo">
+        <p>Character Database</p>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search characters...">
+        </div>
+    </header>
+    
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Fetching characters...</p>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
+    <div class="pagination-container" id="pagination-container" style="display: none;">
+        <button id="prevBtn" class="page-btn">← Prev</button>
+        <span id="pageInfo" class="page-info">Page 1</span>
+        <button id="nextBtn" class="page-btn">Next →</button>
+    </div>
+
+    <div id="viewer" class="modal">
+        <div class="modal-content">
+            <button id="closeBtn" class="close-btn">✕</button>
+            <div class="modal-body">
+                <div class="image-container">
+                    <img id="viewImg" src="" alt="Character Image">
+                </div>
+                <div class="details-container">
+                    <h2 id="charName">Character Name</h2>
+                    <div class="tags">
+                        <span id="charStatus" class="tag status">Status</span>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="label">Bounty:</span>
+                            <span class="value" id="charBounty">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Haki Types:</span>
+                            <span class="value" id="charHaki">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Affiliation:</span>
+                            <span class="value" id="charAffiliation">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Origin:</span>
+                            <span class="value" id="charOrigin">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Race:</span>
+                            <span class="value" id="charRace">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">First Appearance:</span>
+                            <span class="value" id="charAppearance">-</span>
+                        </div>
+                    </div>
+                    <div class="description-box">
+                        <span class="label">Description:</span>
+                        <p id="charDesc" class="description">-</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Viewer -->
+    <div id="fsViewer" class="fs-viewer">
+        <span id="hint">🔒 Mode Terkunci - Layar Tetap Hidup</span>
+        <img id="fsImg" src="" alt="Fullscreen Image">
+        <div class="controls">
+            <button class="btn btn-lock" id="lockBtn">🔒 LOCK LAYAR</button>
+            <button class="btn btn-unlock" id="unlockBtn">🔓 UNLOCK</button>
+            <button class="btn btn-unlock" id="fsCloseBtn" style="position:absolute;top:20px;right:20px;padding:8px 12px">✕</button>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="search.js"></script>
+    <script src="theme.js"></script>
+    <script src="modal.js"></script>
+    <script src="fullscreen.js"></script>
+    <script src="gallery.js"></script>
+</body>
+</html>
