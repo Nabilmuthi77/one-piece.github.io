@@ -15,6 +15,13 @@ document.getElementById('viewImg').onclick = () => {
 
 function prevent(e) { e.preventDefault(); }
 
+function handlePopState(e) {
+    if (fsViewer.classList.contains('locked')) {
+        // Prevent going back by pushing state again
+        history.pushState(null, null, location.href);
+    }
+}
+
 async function enableLock() {
     try {
         if (fsViewer.requestFullscreen) await fsViewer.requestFullscreen();
@@ -24,6 +31,11 @@ async function enableLock() {
         fsViewer.classList.add('locked');
         fsViewer.addEventListener('touchmove', prevent, { passive: false });
         fsImg.addEventListener('touchmove', prevent, { passive: false });
+        
+        // Push state for back button block
+        history.pushState(null, null, location.href);
+        window.addEventListener('popstate', handlePopState);
+
         if (navigator.vibrate) navigator.vibrate(100);
     } catch (e) { alert("Gagal lock: " + e.message) }
 }
@@ -36,6 +48,7 @@ async function releaseLock() {
     fsViewer.classList.remove('locked');
     fsViewer.removeEventListener('touchmove', prevent);
     fsImg.removeEventListener('touchmove', prevent);
+    window.removeEventListener('popstate', handlePopState);
 }
 
 function closeFullscreenViewer() {
@@ -46,6 +59,13 @@ function closeFullscreenViewer() {
 lockBtn.onclick = enableLock;
 unlockBtn.onclick = releaseLock;
 fsCloseBtn.onclick = closeFullscreenViewer;
+
+// Disable context menu / right click / long press when locked
+fsViewer.addEventListener('contextmenu', (e) => {
+    if (fsViewer.classList.contains('locked')) {
+        e.preventDefault();
+    }
+});
 
 document.addEventListener('visibilitychange', async () => {
     if (wakeLock !== null && document.visibilityState === 'visible') {

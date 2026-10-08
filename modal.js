@@ -10,7 +10,13 @@ function formatBounty(bounty) {
 
 function formatHaki(haki) {
     if (!haki || !haki.length) return 'No Haki or Unknown';
-    return haki.join(', ');
+    return haki.map(h => {
+        const hLower = h.toLowerCase();
+        if (hLower.includes('armament')) return 'Busoshoku';
+        else if (hLower.includes('observation')) return 'Kenbunshoku';
+        else if (hLower.includes('conqueror')) return 'Haoshoku';
+        return h;
+    }).join(', ');
 }
 
 function openViewer(char) {

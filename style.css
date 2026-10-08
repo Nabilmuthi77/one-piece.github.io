@@ -61,9 +61,9 @@ header {
 }
 
 .theme-btn {
-    background: var(--card-bg);
-    color: var(--text-main);
-    border: 1px solid var(--modal-border);
+    background: #ffffff;
+    color: #0f172a;
+    border: none;
     padding: 8px 16px;
     border-radius: 20px;
     cursor: pointer;
@@ -73,9 +73,13 @@ header {
     transition: all 0.2s;
 }
 
+body.light-theme .theme-btn {
+    background: #0f172a;
+    color: #ffffff;
+}
+
 .theme-btn:hover {
-    background: var(--accent);
-    color: white;
+    transform: scale(1.05);
 }
 
 .search-container {
@@ -132,6 +136,7 @@ header p {
     font-size: 1.1rem;
     margin-top: 8px;
     font-weight: 300;
+    display: none;
 }
 
 .loading {
@@ -500,8 +505,23 @@ body.no-scroll {
     transform: scale(0.95);
 }
 
+#unlockBtn,
+#fsCloseBtn {
+    display: none;
+}
+
 .locked .btn-lock {
     display: none;
+}
+
+.locked #unlockBtn {
+    display: flex;
+}
+
+.fs-viewer.locked {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .locked #hint {
@@ -558,4 +578,61 @@ body.no-scroll {
 .page-info {
     font-weight: 600;
     color: var(--text-muted);
+}
+
+/* Footer Styles */
+.footer {
+    position: relative;
+    margin-top: auto;
+    width: 100%;
+}
+
+.wave {
+    position: relative;
+    top: 5px;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 60px;
+    transform: rotateY(180deg);
+}
+
+.wave .shape-fill {
+    fill: #0ea5e9; /* Sky blue */
+}
+
+.footer-content {
+    background-color: #0ea5e9;
+    padding: 10px 20px 40px;
+    text-align: center;
+    color: white;
+}
+
+.footer-content p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s;
+}
+
+.contact-btn:hover {
+    transform: scale(1.05);
 }
