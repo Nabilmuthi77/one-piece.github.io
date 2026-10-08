@@ -344,6 +344,7 @@ header p {
     line-height: 1.2;
     background: var(--char-name-gradient);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -599,8 +600,7 @@ body.no-scroll {
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
-    height: 60px;
-    transform: rotateY(180deg);
+    height: 120px;
 }
 
 .wave .shape-fill {
