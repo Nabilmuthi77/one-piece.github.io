@@ -8,9 +8,17 @@ let wakeLock = null;
 
 // Allow opening fullscreen from modal image
 document.getElementById('viewImg').style.cursor = 'pointer';
-document.getElementById('viewImg').onclick = () => {
+document.getElementById('viewImg').onclick = async () => {
     fsImg.src = document.getElementById('viewImg').src;
+    document.getElementById('fsNameBadge').textContent = document.getElementById('charName').textContent;
     fsViewer.classList.add('active');
+    try {
+        if (fsViewer.requestFullscreen) {
+            await fsViewer.requestFullscreen();
+        }
+    } catch (e) {
+        console.log("Gagal fullscreen langsung: " + e.message);
+    }
 };
 
 function prevent(e) { e.preventDefault(); }
@@ -24,7 +32,6 @@ function handlePopState(e) {
 
 async function enableLock() {
     try {
-        if (fsViewer.requestFullscreen) await fsViewer.requestFullscreen();
         if ('wakeLock' in navigator) {
             wakeLock = await navigator.wakeLock.request('screen');
         }

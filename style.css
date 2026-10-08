@@ -61,8 +61,8 @@ header {
 }
 
 .theme-btn {
-    background: #ffffff;
-    color: #0f172a;
+    background: #0ea5e9;
+    color: #ffffff;
     border: none;
     padding: 8px 16px;
     border-radius: 20px;
@@ -71,11 +71,6 @@ header {
     font-weight: 600;
     font-size: 0.9rem;
     transition: all 0.2s;
-}
-
-body.light-theme .theme-btn {
-    background: #0f172a;
-    color: #ffffff;
 }
 
 .theme-btn:hover {
@@ -506,17 +501,58 @@ body.no-scroll {
     transform: scale(0.95);
 }
 
-#unlockBtn,
-#fsCloseBtn {
+#unlockBtn {
     display: none;
 }
 
-.locked .btn-lock {
+.locked .btn-lock,
+.locked #fsCloseBtn {
     display: none;
 }
 
 .locked #unlockBtn {
     display: flex;
+}
+
+.fs-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #0ea5e9;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 1rem;
+    z-index: 10;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
+}
+
+.btn-close-fs {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.2s;
+    z-index: 10;
+}
+
+.btn-close-fs:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.btn-close-fs:active {
+    transform: scale(0.95);
 }
 
 .fs-viewer.locked {
