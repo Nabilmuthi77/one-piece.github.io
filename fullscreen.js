@@ -50,7 +50,6 @@ async function enableLock() {
 async function releaseLock() {
     try {
         if (wakeLock) { await wakeLock.release(); wakeLock = null; }
-        if (document.fullscreenElement) await document.exitFullscreen();
     } catch { }
     fsViewer.classList.remove('locked');
     fsViewer.removeEventListener('touchmove', prevent);
@@ -58,8 +57,11 @@ async function releaseLock() {
     window.removeEventListener('popstate', handlePopState);
 }
 
-function closeFullscreenViewer() {
+async function closeFullscreenViewer() {
     releaseLock();
+    try {
+        if (document.fullscreenElement) await document.exitFullscreen();
+    } catch { }
     fsViewer.classList.remove('active');
 }
 

@@ -445,6 +445,8 @@ body.no-scroll {
     display: none;
     z-index: 200;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .fs-viewer.active {
@@ -452,9 +454,8 @@ body.no-scroll {
 }
 
 .fs-viewer img {
-    flex: 1;
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 75vh;
     object-fit: contain;
     background: #000;
     touch-action: none;
@@ -515,17 +516,16 @@ body.no-scroll {
 }
 
 .fs-badge {
-    position: absolute;
-    top: 20px;
-    left: 20px;
     background: #0ea5e9;
     color: #ffffff;
-    padding: 8px 16px;
-    border-radius: 20px;
+    padding: 10px 24px;
+    border-radius: 24px;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.5rem;
     z-index: 10;
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
+    margin-top: 15px;
+    text-align: center;
 }
 
 .btn-close-fs {
